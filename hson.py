@@ -9,14 +9,14 @@ def jsonify(headers):
         headers_list = entry.split(" ")
         key = headers_list[0]
 
-        if key.startswith(":"):
-            key = key[1:]
-
         if key.endswith(":"):
             key = headers_list[0][:-1]
 
         else:
             return "Invalid HTTPS headers format"
+        
+        if key.startswith(":"):
+            key = key[1:]
 
         value = " ".join(headers_list[1:])
 
