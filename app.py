@@ -1,5 +1,4 @@
 import streamlit as st
-import pyperclip
 import hson
 from styles import CUSTOM_CSS
 
@@ -7,10 +6,7 @@ from styles import CUSTOM_CSS
 def jsonify():
     json_value = hson.jsonify(headers)
     st.session_state["json_value"] = json_value
-
-
-def copy():
-    pyperclip.copy(st.session_state["json_value"])
+    
 
 st.set_page_config(page_title="HSON",
                    page_icon=":performing_arts:",
@@ -35,6 +31,3 @@ with json_col:
     st.text_area("JSON",
                  height=400,
                  value=st.session_state["json_value"])
-
-    st.button("Copy",
-              on_click=copy)
